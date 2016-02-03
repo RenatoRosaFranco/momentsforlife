@@ -42,7 +42,7 @@ Route::get('/logout', ['as' => 'logout.get',   'uses' => 'Auth\AuthController@ge
 
 
 Route::group(['prefix' => 'images', 'middleware' => 'auth'], function() {   
-    Route::get('', ['as' => 'images.index', 'uses' => 'imageController@index']); // visualizar [Global]
+    Route::get('', ['as' => 'images.index', 'uses' => 'ImageController@index']); // visualizar [Global]
 });
 
 /*
@@ -55,14 +55,14 @@ Route::group(['prefix' => 'images', 'middleware' => 'auth'], function() {
 |
 */
 Route::group(['prefix' => 'image', 'middleware' => 'auth'], function(){
-    Route::get('/create',           ['as' => 'image.create',  'uses' => 'imageController@create']);    // cadastrar[GET]
-    Route::post('/create',          ['as' => 'image.store',   'uses' => 'imageController@store']);     // cadastrar[POST]
-    Route::get ('/{image}/show',    ['as' => 'image.show',    'uses' => 'imageController@show']);      // Visualizar[GET]
+    Route::get('/create',           ['as' => 'image.create',  'uses' => 'ImageController@create']);    // cadastrar[GET]
+    Route::post('/create',          ['as' => 'image.store',   'uses' => 'ImageController@store']);     // cadastrar[POST]
+    Route::get ('/{image}/show',    ['as' => 'image.show',    'uses' => 'ImageController@show']);      // Visualizar[GET]
     Route::post('/{image}/show',    ['as' => 'image.comment', 'uses' => 'CommentController@store']);
-    Route::get('/{image}/edit',     ['as' => 'image.edit',    'uses' => 'imageController@edit']);      // Editar[GET] 
-    Route::post('/{image}/update',  ['as' => 'image.update',  'uses' => 'imageController@update']);    // Atualizar[PATCH]
-    Route::post('/{image}/delete',  ['as' => 'image.delete',  'uses' => 'imageController@destroy']);   // Deletar[PATCH]
-    Route::post('/search',          ['as' => 'image.search',  'uses' => 'imageController@search']);    // Buscar[GET]
+    Route::get('/{image}/edit',     ['as' => 'image.edit',    'uses' => 'ImageController@edit']);      // Editar[GET] 
+    Route::post('/{image}/update',  ['as' => 'image.update',  'uses' => 'ImageController@update']);    // Atualizar[PATCH]
+    Route::post('/{image}/delete',  ['as' => 'image.delete',  'uses' => 'ImageController@destroy']);   // Deletar[PATCH]
+    Route::post('/search',          ['as' => 'image.search',  'uses' => 'ImageController@search']);    // Buscar[GET]
 });
 
 /*
