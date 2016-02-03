@@ -38,8 +38,8 @@ class ImageController extends Controller
     public function show($id){
        $user     = User::FindOrFail(Auth::user()->id);
        $image    = Image::findOrFail($id);
-       $comments = Comment::where('id_image', 'like', $id)->simplePaginate(4);
-       $count    = Comment::where('id_image', 'like', $id)->get(); // count
+       $comments = Comment::where('id_image', '=', $id)->simplePaginate(4);
+       $count    = Comment::where('id_image', '=', $id)->get(); // count
        return view('image.show', 
               [
                 'image'    => $image, 
@@ -143,13 +143,13 @@ class ImageController extends Controller
     {   
         $user   = User::FindOrFail(Auth::user()->id);   
     	  $query = $request->search;
-        $images = Image::where("title", "like", "%$query%")->get();
+        $images = Image::where("title", "=", "%$query%")->get();
         return view('image.search', ['images' => $images, 'query' => $query, 'user' => $user]);
     }
 
     public function myPics(){
          $user   = User::findOrFail(Auth::User()->id);
-         $images = Image::where("id_user", "like", Auth::user()->id)->get();
+         $images = Image::where("id_user", "=", Auth::user()->id)->get();
          return view('my.pics',
         [
           'user' =>   $user,

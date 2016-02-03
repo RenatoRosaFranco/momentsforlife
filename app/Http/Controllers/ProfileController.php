@@ -48,7 +48,7 @@ class ProfileController extends Controller
     public function show($nickname){
       
        $user   = User::FindOrFail(Auth::user()->id);
-       $user2  = User::where('nickname', 'like', $nickname)->first();
+       $user2  = User::where('nickname', '=', $nickname)->first();
 
        return view('profile.show', 
             [
