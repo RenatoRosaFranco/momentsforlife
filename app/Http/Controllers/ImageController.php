@@ -21,7 +21,7 @@ class ImageController extends Controller
       $user   = User::FindOrFail(Auth::user()->id);
       $images = Image::paginate(9);
       $users  = User::all();
-      $myimages = Image::where("id_user", "like", Auth::user()->id)->get();
+      $myimages = Image::where("id_user", "=", Auth::user()->id)->get();
 
       
       return view('image.index', 
